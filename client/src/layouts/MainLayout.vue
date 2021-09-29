@@ -2,9 +2,11 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" />
+        <router-link :to="{ path: '/' }"
+          ><q-toolbar-title> Quasar App </q-toolbar-title></router-link
+        >
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-space />
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
