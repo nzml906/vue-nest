@@ -9,8 +9,12 @@
       <q-separator />
 
       <q-card-actions vertical>
-        <q-btn flat>Login</q-btn>
-        <q-btn flat>Sign Up</q-btn>
+        <router-link :to="{ path: 'login' }"
+          ><q-btn flat>Login</q-btn></router-link
+        >
+        <router-link :to="{ path: 'signup' }"
+          ><q-btn flat>Sign Up</q-btn></router-link
+        >
       </q-card-actions>
     </q-card>
   </div>
