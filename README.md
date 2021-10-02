@@ -29,7 +29,7 @@ cp prisma/.env.example prisma/.env
 ### Create the first migration: (already done though)
 
 ```bash
-prisma migrate dev --name init
+npx prisma migrate dev --name init
 ```
 
 ### Now generate the prisma client from the migrated database with the following command
