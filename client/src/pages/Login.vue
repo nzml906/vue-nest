@@ -1,22 +1,24 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-md row items-start">
-      <q-input v-model="email" filled type="email" hint="Email" />
-      <q-input
-        v-model="password"
-        filled
-        :type="isPwd ? 'password' : 'text'"
-        hint="Password "
-      >
-        <template v-slot:append>
-          <q-icon
-            :name="isPwd ? 'visibility_off' : 'visibility'"
-            class="cursor-pointer"
-            @click="isPwd = !isPwd"
-          />
-        </template>
-      </q-input>
-      <q-btn color="secondary" label="Login" />
+      <form action="" @submit.prevent="onSubmit(email, password)">
+        <q-input v-model="email" filled type="email" hint="Email" />
+        <q-input
+          v-model="password"
+          filled
+          :type="isPwd ? 'password' : 'text'"
+          hint="Password "
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
+        <q-btn color="secondary" label="Login" type="submit" />
+      </form>
     </div>
   </div>
 </template>
@@ -30,6 +32,13 @@ export default {
       isPwd: ref(true),
       email: ref(''),
     };
+  },
+  methods: {
+    onSubmit(email, password) {
+      this.$store
+        .dispatch('auth/login', { email, password })
+        .then(() => this.$router.push({ name: 'home' }));
+    },
   },
 };
 </script>

@@ -67,6 +67,19 @@ export const auth: Module<AuthState, RootState> = {
     logout(context) {
       context.commit('PURGE_AUTH');
     },
+    login(context, credentials: User) {
+      return new Promise((resolve) => {
+        axiosClient
+          .post('users/login', { user: credentials })
+          .then((user) => {
+            context.commit('SET_AUTH', user);
+            resolve(user);
+          })
+          .catch((error) => {
+            context.commit('SET_ERROR', error);
+          });
+      });
+    },
   },
   mutations: {
     SET_AUTH(state, user: User) {
