@@ -37,7 +37,7 @@ export default route<StateInterface>(function (/* { store, ssrContext } */) {
   });
 
   Router.beforeEach((to, from, next) => {
-    const publicPages = ['/login'];
+    const publicPages = ['/login', '/signup'];
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = localStorage.getItem('id_token');
     if (authRequired && !loggedIn) {
