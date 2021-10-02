@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 import { Module } from 'vuex';
-import axios from 'axios';
+import { api } from '../boot/axios';
 
 const getToken = () => {
   return window.localStorage.getItem('id_token');
@@ -33,12 +33,6 @@ const initialState = {
   errors: undefined,
 };
 
-const API_URL = 'http://localhost:3000/api';
-
-const axiosClient = axios.create({
-  baseURL: API_URL,
-});
-
 const saveToken = (token: string) => {
   window.localStorage.setItem('id_token', token);
 };
@@ -52,7 +46,7 @@ export const auth: Module<AuthState, RootState> = {
   actions: {
     signup(context, credentials: User) {
       return new Promise((resolve, reject) => {
-        axiosClient
+        api
           .post('users', { user: credentials })
           .then((user) => {
             context.commit('SET_AUTH', user);
@@ -64,12 +58,12 @@ export const auth: Module<AuthState, RootState> = {
           });
       });
     },
-    logout(context) {
+    logout(context): void {
       context.commit('PURGE_AUTH');
     },
     login(context, credentials: User) {
       return new Promise((resolve) => {
-        axiosClient
+        api
           .post('users/login', { user: credentials })
           .then((user) => {
             context.commit('SET_AUTH', user);
