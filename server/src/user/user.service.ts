@@ -6,7 +6,7 @@ import { HttpException } from '@nestjs/common/exceptions/http.exception';
 import { HttpStatus } from '@nestjs/common';
 import * as argon2 from 'argon2';
 const jwt = require('jsonwebtoken');
-import { SECRET } from './help/config';
+import { SECRET } from '../config';
 
 const select = {
   email: true,
