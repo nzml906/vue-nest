@@ -20,6 +20,14 @@
         <q-btn color="secondary" label="Login" type="submit" />
       </form>
     </div>
+
+    <div class="q-gutter-md row items-start">
+      <q-separator />
+      <h6>New here?</h6>
+      <router-link :to="{ path: 'signup' }"
+        ><q-btn color="secondary" label="Signup"
+      /></router-link>
+    </div>
   </div>
 </template>
 <script>
