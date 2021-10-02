@@ -45,3 +45,27 @@ npm run start:dev
 ```
 
 Test api with http://localhost:3000/api in your favourite browser
+
+## Setup client
+
+```bash
+cd client
+```
+
+### install dependencies
+
+```bash
+npm i
+```
+
+### set environment variable
+
+```bash
+cp src/config.ts.example src/config.ts
+```
+
+### Start frontend server
+
+```bash
+npm start
+```
